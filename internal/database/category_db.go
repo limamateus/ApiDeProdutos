@@ -49,10 +49,13 @@ func (cd *CategoryDB) GetCategory(id string) (*entity.Category, error) {
 
 // Metodo para criar uma categoria nova
 func (cd *CategoryDB) CreateCategory(category *entity.Category) (string, error) {
+
+	println(category.ID, category.Name)
 	_, err := cd.db.Exec("INSERT INTO categories (id,name) VALUES(?,?)", category.ID, category.Name)
 
 	if err != nil {
-		return "Error", err
+		println(err.Error())
+		return "Error ao salvar no banco", err
 	}
 
 	return category.ID, nil

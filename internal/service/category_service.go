@@ -35,6 +35,7 @@ func (cs *CategoryService) GetCategory(id string) (*entity.Category, error) {
 }
 
 func (cs *CategoryService) CreateCategory(name string) (*entity.Category, error) {
+
 	category := entity.NewCategory(name)
 
 	_, err := cs.CategoryDB.CreateCategory(category)
